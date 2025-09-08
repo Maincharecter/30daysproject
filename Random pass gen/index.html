@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Page</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.hugeicons.com/font/hgi-stroke-rounded.css" />
+</head>
+
+<body>
+    <div class="app">
+        <h1 class="whiteTxt">Generate a</h1>
+        <h1 class="GreenTxt">Random Passsword </h1>
+        <div class="Passsword">
+            <p id="PassswordBox">Passsword</p>
+            <button class="copybtn"><img src="copy.png" alt=""></button>
+        </div>
+        <div class="genaratebtn">
+            <button id="Generatebtn"><i class="hgi hgi-stroke hgi-zap"></i> Generate Passsword</button>
+        </div>
+
+
+    </div>
+
+
+
+    <script>
+const PassswordBox = document.getElementById("PassswordBox")
+length = 12;
+const Generatebtn = document.getElementById("Generatebtn")
+Generatebtn.addEventListener("click",()=>{
+    let NewPassword = ""
+    const allchar = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!#$%&'()*+,-./:;<=>?@[\]^_`{|}~ "
+    while (length>NewPassword.length) {
+        NewPassword += allchar[Math.floor(Math.random()*allchar.length)]
+    }
+    PassswordBox.innerText= NewPassword;
+})
+const copybtn = document.querySelector(".copybtn")
+    copybtn.addEventListener("click", () => {
+      const textToCopy = PassswordBox.innerText;
+      navigator.clipboard.writeText(textToCopy)
+        .then(() => {
+          alert("Password copied to clipboard!");
+        })
+        .catch(err => {
+          console.error("Failed to copy: ", err);
+        });
+    });
+    </script>
+</body>
+
+</html>
